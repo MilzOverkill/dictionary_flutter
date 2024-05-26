@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'result_screen.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -17,7 +19,8 @@ class HomeScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Image.asset( /// image
+              Image.asset(
+                /// image
                 "assets/dic.png",
                 fit: BoxFit.cover,
                 height: MediaQuery.of(context).size.height / 3.5,
@@ -25,16 +28,39 @@ class HomeScreen extends StatelessWidget {
               SizedBox(height: 50),
               TextField(
                 controller: _controller,
-                decoration:InputDecoration(
+                decoration: InputDecoration(
                   hintText: "Enter a Word",
                   border: OutlineInputBorder(),
-                ) ,
+                ),
               ),
-
               SizedBox(height: 50),
+              Material(
+                borderRadius: BorderRadius.circular(10),
+                child: MaterialButton(
+                  minWidth: double.infinity,
+                  height: 55,
+                  color: Colors.pink,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ResultScreen(word: _controller.text,),
+                        ));
+                  },
+
+                  child: Text(
+                    "Search",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color:Colors.white,
+
+                    ),),
+                  
 
 
-              
+                ),
+              )
             ],
           ),
         ),
